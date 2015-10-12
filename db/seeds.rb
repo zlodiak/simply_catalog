@@ -12,6 +12,7 @@ audio = Product.create!(:title => 'аудин техника', :is_catalog => tr
 computers = Product.create!(:title => 'компьютеры', :is_catalog => true)
 phones = Product.create!(:title => 'телефоны', :is_catalog => true)
 photo = Product.create!(:title => 'фото техника', :is_catalog => true)
+product1 = Product.create!(:title => 'товар 1')
 
   tele = Product.create!(:title => 'телевизоры', :is_catalog => true).move_to_child_of(video)
   rack = Product.create!(:title => 'стойки и кронштейны', :is_catalog => true).move_to_child_of(video)
