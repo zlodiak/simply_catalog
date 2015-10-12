@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'catalog/index'
+
   get 'home/index'
 
   resources :products
+  get 'product_nested/:id' => 'products#index', as: 'product_nested'
+
   get 'delivery/index'
 
   get 'contacts/index'
