@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :pps
   get 'home/index'
 
   resources :products
