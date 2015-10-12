@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Color.create!(:title => 'red')
+Color.create!(:title => 'blue')
+Color.create!(:title => 'green')
+Color.create!(:title => 'yellow')
+
 
 video = Product.create!(:title => 'телевизоры и видео', :is_catalog => true)
 audio = Product.create!(:title => 'аудин техника', :is_catalog => true)
@@ -24,7 +29,7 @@ product1 = Product.create!(:title => 'товар 1', :price => Faker::Number.dec
           :title => Faker::Name.title, 
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
-          :color => Faker::Number.between(1, 4), 
+          :color_id => rand(1, 4), 
           :description => Faker::Lorem.paragraph(8)
         ).move_to_child_of(projectors)
       end
@@ -34,7 +39,7 @@ product1 = Product.create!(:title => 'товар 1', :price => Faker::Number.dec
           :title => Faker::Name.title, 
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
-          :color => Faker::Number.between(1, 4), 
+          :color_id => rand(1, 4), 
           :description => Faker::Lorem.paragraph(8)
         ).move_to_child_of(televisors)
       end
@@ -44,7 +49,7 @@ product1 = Product.create!(:title => 'товар 1', :price => Faker::Number.dec
           :title => Faker::Name.title, 
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
-          :color => Faker::Number.between(1, 4), 
+          :color_id => rand(1, 4), 
           :description => Faker::Lorem.paragraph(8)
         ).move_to_child_of(sputniks)
       end

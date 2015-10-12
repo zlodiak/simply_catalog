@@ -24,5 +24,10 @@ module SimplyCatalog
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    config.generators do |g|
+        g.test_framework        :rspec, fixtures: true, views: false
+        g.fixture_replacement   :factory_girl, dir: 'rspec/factories' 
+    end    
   end
 end

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012103702) do
+ActiveRecord::Schema.define(version: 20151012143622) do
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -20,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151012103702) do
     t.text     "description"
     t.integer  "price"
     t.integer  "weight"
-    t.integer  "color"
+    t.integer  "color_id"
     t.boolean  "is_catalog"
     t.integer  "parent_id"
     t.integer  "lft"
