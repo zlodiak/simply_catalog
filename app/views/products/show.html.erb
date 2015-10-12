@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-xs-3">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <%= @product.title %>
-      </div>
-      <div class="panel-footer">Цена: <%= @product.price %></div>
-    </div>   
+  <div class="col-xs-12">
+    <div class="cell">Название <%= @product.title %></div>
+    <div class="cell">Цена <%= @product.price %></div>
+    <div class="cell">Вес <%= @product.weight %></div>
+    <div class="cell">Цвет <%= @product.color %></div>
+    <div class="cell">Описание <%= @product.description %></div>
   </div>
 </div>
 

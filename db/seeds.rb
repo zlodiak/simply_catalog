@@ -12,31 +12,43 @@ audio = Product.create!(:title => 'аудин техника', :is_catalog => tr
 computers = Product.create!(:title => 'компьютеры', :is_catalog => true)
 phones = Product.create!(:title => 'телефоны', :is_catalog => true)
 photo = Product.create!(:title => 'фото техника', :is_catalog => true)
-product1 = Product.create!(:title => 'товар 1')
+product1 = Product.create!(:title => 'товар 1', :price => Faker::Number.decimal(2), :weight => Faker::Number.number(3), :color => Faker::Number.between(1, 4), :description => Faker::Lorem.paragraph(8))
 
   tele = Product.create!(:title => 'телевизоры', :is_catalog => true).move_to_child_of(video)
   rack = Product.create!(:title => 'стойки и кронштейны', :is_catalog => true).move_to_child_of(video)
   accessories = Product.create!(:title => 'аксессуары', :is_catalog => true).move_to_child_of(video)
 
     projectors = Product.create!(:title => 'проекторы', :is_catalog => true).move_to_child_of(tele)
-      projector1 = Product.create!(:title => 'проектор 1').move_to_child_of(projectors)
-      projector2 = Product.create!(:title => 'проектор 2').move_to_child_of(projectors)
-      projector3 = Product.create!(:title => 'проектор 3').move_to_child_of(projectors)
-      projector4 = Product.create!(:title => 'проектор 4').move_to_child_of(projectors)
-      projector5 = Product.create!(:title => 'проектор 5').move_to_child_of(projectors)
+      30.times do |n|
+        Product.create!(
+          :title => Faker::Name.title, 
+          :price => Faker::Number.decimal(2), 
+          :weight => Faker::Number.number(3), 
+          :color => Faker::Number.between(1, 4), 
+          :description => Faker::Lorem.paragraph(8)
+        ).move_to_child_of(projectors)
+      end
     televisors = Product.create!(:title => 'телевизоры', :is_catalog => true).move_to_child_of(tele)
-      televisor1 = Product.create!(:title => 'телевизор 1').move_to_child_of(televisors)
-      televisor2 = Product.create!(:title => 'телевизор 2').move_to_child_of(televisors)
-      televisor3 = Product.create!(:title => 'телевизор 3').move_to_child_of(televisors)
-      televisor4 = Product.create!(:title => 'телевизор 4').move_to_child_of(televisors)
-      televisor5 = Product.create!(:title => 'телевизор 5').move_to_child_of(televisors)
-      televisor6 = Product.create!(:title => 'телевизор 6').move_to_child_of(televisors)
+      30.times do |n|
+        Product.create!(
+          :title => Faker::Name.title, 
+          :price => Faker::Number.decimal(2), 
+          :weight => Faker::Number.number(3), 
+          :color => Faker::Number.between(1, 4), 
+          :description => Faker::Lorem.paragraph(8)
+        ).move_to_child_of(televisors)
+      end
     sputniks = Product.create!(:title => 'спутниковое тв', :is_catalog => true).move_to_child_of(tele)
-      sputnik1 = Product.create!(:title => 'спутник 1').move_to_child_of(sputniks)
-      sputnik2 = Product.create!(:title => 'спутник 2').move_to_child_of(sputniks)
-      sputnik3 = Product.create!(:title => 'спутник 3').move_to_child_of(sputniks)
-      sputnik4 = Product.create!(:title => 'спутник 4').move_to_child_of(sputniks)
-
+      30.times do |n|
+        Product.create!(
+          :title => Faker::Name.title, 
+          :price => Faker::Number.decimal(2), 
+          :weight => Faker::Number.number(3), 
+          :color => Faker::Number.between(1, 4), 
+          :description => Faker::Lorem.paragraph(8)
+        ).move_to_child_of(sputniks)
+      end
+      
     sputnik = Product.create!(:title => 'стойки для телевизоров', :is_catalog => true).move_to_child_of(rack)
     sputnik = Product.create!(:title => 'кронштейны для телевизоров', :is_catalog => true).move_to_child_of(rack)
     sputnik = Product.create!(:title => 'подставки для телевизоров', :is_catalog => true).move_to_child_of(rack)

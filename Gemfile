@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 gem 'awesome_nested_set'
+gem 'faker'
+gem 'populate'
 
 
 
