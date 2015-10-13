@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'maintenance/index'
+
   get 'catalog/index'
 
   get 'home/index'
