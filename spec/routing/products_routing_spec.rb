@@ -7,6 +7,10 @@ RSpec.describe ProductsController, type: :routing do
       expect(:get => "/products").to route_to("products#index")
     end
 
+    it "routes to #index" do
+      expect(:get => "/product_nested/1").to route_to("products#index", :id => "1")
+    end    
+
     it "routes to #new" do
       expect(:get => "/products/new").to route_to("products#new")
     end
@@ -34,6 +38,5 @@ RSpec.describe ProductsController, type: :routing do
     it "routes to #destroy" do
       expect(:delete => "/products/1").to route_to("products#destroy", :id => "1")
     end
-
   end
 end
