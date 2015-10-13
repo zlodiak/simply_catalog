@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it "belongs_to color" do
+      should belong_to(:color)
+    end
+  end 
 end
