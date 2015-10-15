@@ -21,6 +21,7 @@
           <%= link_to 'delivery', delivery_index_path, class: 'blog-nav-item' %>
           <%= link_to 'contacts', contacts_index_path, class: 'blog-nav-item' %>
           <%= link_to 'maintenance', maintenance_index_path, class: 'blog-nav-item' %>
+          <%= link_to 'Download CSV list', product_export_csv_path(format: :csv) %>
         </nav>
       </div>
     </div>

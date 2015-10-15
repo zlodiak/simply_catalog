@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
       @products = Product.where(parent_id: params[:id])
     else
       @products = Product.roots
-    end
+    end   
   end
 
   # GET /products/1
@@ -63,6 +63,18 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def export_csv
+    @products = Product.all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"products.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end 
   end
 
   private

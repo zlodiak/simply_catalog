@@ -22,7 +22,7 @@ product1 = Product.create!(
   :price => Faker::Number.decimal(2), 
   :weight => Faker::Number.number(3), 
   :color => color, 
-  :description => Faker::Lorem.paragraph(8)
+  :description => Faker::Lorem.paragraph(1)
 )
 
   tele = Product.create!(:title => 'телевизоры', :is_catalog => true).move_to_child_of(video)
@@ -36,7 +36,7 @@ product1 = Product.create!(
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
           :color => color, 
-          :description => Faker::Lorem.paragraph(8)
+          :description => Faker::Lorem.paragraph(1)
         ).move_to_child_of(projectors)
       end
     televisors = Product.create!(:title => 'телевизоры', :is_catalog => true).move_to_child_of(tele)
@@ -46,7 +46,7 @@ product1 = Product.create!(
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
           :color => color, 
-          :description => Faker::Lorem.paragraph(8)
+          :description => Faker::Lorem.paragraph(1)
         ).move_to_child_of(televisors)
       end
     sputniks = Product.create!(:title => 'спутниковое тв', :is_catalog => true).move_to_child_of(tele)
@@ -56,7 +56,7 @@ product1 = Product.create!(
           :price => Faker::Number.decimal(2), 
           :weight => Faker::Number.number(3), 
           :color => color, 
-          :description => Faker::Lorem.paragraph(8)
+          :description => Faker::Lorem.paragraph(1)
         ).move_to_child_of(sputniks)
       end
       

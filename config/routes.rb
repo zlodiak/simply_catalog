@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :products
   get 'product_nested/:id' => 'products#index', as: 'product_nested'
+  get 'product_export_csv' => 'products#export_csv', as: 'product_export_csv'
 
   get 'delivery/index'
 
