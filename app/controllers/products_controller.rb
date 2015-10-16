@@ -1,9 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb "products", :products_path
+
   # GET /products
   # GET /products.json
   def index
+    #add_breadcrumb "products", products_path, :title => "Back to the Index"
+
     if params[:id]
       @products = Product.where(parent_id: params[:id])
     else
@@ -14,6 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    add_breadcrumb @product.title, product_path(params[:id])
   end
 
   # GET /products/new

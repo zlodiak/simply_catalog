@@ -29,6 +29,7 @@ gem 'faker'
 gem 'populate'
 gem 'roo'
 gem 'iconv'
+gem 'breadcrumbs_on_rails'
 
 
 
