@@ -2,3 +2,9 @@
 <p>Find me in app/views/maintenance/index.html.erb</p>
 
 <%= link_to 'Download CSV list', product_export_csv_path(format: :csv) %>
+
+<h1>Import csv</h1>
+<%= form_tag import_products_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

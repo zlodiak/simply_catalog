@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  resources :products
+  resources :products do
+    collection { post :import }
+  end
   get 'product_nested/:id' => 'products#index', as: 'product_nested'
   get 'product_export_csv' => 'products#export_csv', as: 'product_export_csv'
 

@@ -27,6 +27,8 @@ gem 'bootstrap-sass'
 gem 'awesome_nested_set'
 gem 'faker'
 gem 'populate'
+gem 'roo'
+gem 'iconv'
 
 
 
