@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
 
     if params[:id]
       @products = Product.where(parent_id: params[:id])
+      add_crumb(Product.find(params[:id]).title, product_path(params[:id]))
+
     else
       @products = Product.roots
     end   
@@ -83,7 +85,6 @@ class ProductsController < ApplicationController
   end
 
   def import
-    p '======================='
     Product.import(params[:file])
     redirect_to root_url, notice: "Products imported."
   end
@@ -98,5 +99,9 @@ class ProductsController < ApplicationController
     def product_params
       Product.import(params[:product])
       redirect_to root_url, notice: "Products imported."
+    end
+
+    def add_crumb(title, path)
+      add_breadcrumb title, path
     end
 end
