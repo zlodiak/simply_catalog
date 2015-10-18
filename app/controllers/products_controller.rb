@@ -12,10 +12,16 @@ class ProductsController < ApplicationController
       @products = Product.where(parent_id: params[:id]).order(parent_id: :desc)
       current_product = Product.find(params[:id])
       @breadcrumbs_products = []
-      p '===================='
-      p params[:id]
-      p current_product
+
+      # construct crumbs
       add_crumb(current_product)
+
+      # add crumbs to current crumbspath
+      @breadcrumbs_products.reverse.each do |product|
+        add_breadcrumb product.title, product_nested_path(product.id)
+      end
+
+
     else
       @products = Product.roots
     end   
@@ -106,9 +112,7 @@ class ProductsController < ApplicationController
     end
 
     def add_crumb(product)
-      add_breadcrumb product.title, products_path(product.id)
-      p '------------'
-      p product.title + products_path(product.id)
+      @breadcrumbs_products.push product
       add_crumb(Product.find(product.parent_id)) if product.parent_id
     end  
 end
