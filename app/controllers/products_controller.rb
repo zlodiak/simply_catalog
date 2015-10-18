@@ -20,8 +20,6 @@ class ProductsController < ApplicationController
       @breadcrumbs_products.reverse.each do |product|
         add_breadcrumb product.title, product_nested_path(product.id)
       end
-
-
     else
       @products = Product.roots
     end   
@@ -30,6 +28,19 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @breadcrumbs_products = []
+    current_product = Product.find(params[:id])
+
+    # construct crumbs
+    add_crumb(current_product)
+
+    # add crumb to current crumbspath
+    @breadcrumbs_products.reverse.each_with_index do |product, index|
+      break if index == @breadcrumbs_products.size - 1
+      add_breadcrumb product.title, product_nested_path(product.id)
+    end
+
+    # add product crumb   
     add_breadcrumb @product.title, product_path(params[:id])
   end
 
