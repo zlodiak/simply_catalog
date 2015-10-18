@@ -47,6 +47,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @catalogs = Product.where(is_catalog: true)
   end
 
   # GET /products/1/edit
