@@ -9,9 +9,13 @@ class ProductsController < ApplicationController
     #add_breadcrumb "products", products_path, :title => "Back to the Index"
 
     if params[:id]
-      @products = Product.where(parent_id: params[:id])
-      add_crumb(Product.find(params[:id]).title, product_path(params[:id]))
-
+      @products = Product.where(parent_id: params[:id]).order(parent_id: :desc)
+      current_product = Product.find(params[:id])
+      @breadcrumbs_products = []
+      p '===================='
+      p params[:id]
+      p current_product
+      add_crumb(current_product)
     else
       @products = Product.roots
     end   
@@ -101,7 +105,10 @@ class ProductsController < ApplicationController
       redirect_to root_url, notice: "Products imported."
     end
 
-    def add_crumb(title, path)
-      add_breadcrumb title, path
-    end
+    def add_crumb(product)
+      add_breadcrumb product.title, products_path(product.id)
+      p '------------'
+      p product.title + products_path(product.id)
+      add_crumb(Product.find(product.parent_id)) if product.parent_id
+    end  
 end
