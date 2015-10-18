@@ -57,10 +57,19 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    p '==============================='
+    p catalog_params[:catalog_id]
+    p product_params[:title]
+    p product_params[:description]
+    @product = Product.create!(product_params)
+    @product.is_catalog = nil 
+    parent = Product.find(catalog_params[:catalog_id])
+    p '--------------'
+    p parent
+    
 
     respond_to do |format|
-      if @product.save
+      if @product.move_to_child_of(parent)
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -119,9 +128,12 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      Product.import(params[:product])
-      redirect_to root_url, notice: "Products imported."
+      params.require(:product).permit(:title, :description, :price, :weight)
     end
+
+    def catalog_params
+      params.require(:catalog).permit(:catalog_id)
+    end    
 
     def add_crumb(product)
       @breadcrumbs_products.push product

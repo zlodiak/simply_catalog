@@ -1,7 +1,5 @@
 <h1>New Product</h1>
 
-<%= select_tag "product", options_from_collection_for_select(@catalogs, "id", "title") %>
-
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -14,6 +12,13 @@
       </ul>
     </div>
   <% end %>
+
+
+
+  <div class="cell">
+    <%#= select_tag "product", options_from_collection_for_select(@catalogs, "id", "title") %>
+    <%= select("catalog", "catalog_id", @catalogs.collect {|p| [ p.title, p.id ] }, {include_blank: 'Выберите категорию'}, {class: 'form-control'}) %>
+  </div>
 
   <div class="cell">
     <%= label_tag(:title, "title:") %> 
