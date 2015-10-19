@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="row">
+<div class="row product_area">
   <div class="col-xs-12">
     <div class="cell">Название <%= @product.title %></div>
     <div class="cell">Цена <%= @product.price %></div>
@@ -8,6 +8,21 @@
     <div class="cell">Цвет <%= @product.color %></div>
     <div class="cell">Описание <%= @product.description %></div>
   </div>
+</div>
+
+<hr />
+
+<div class="comments_area">
+  <% @comments.each do |comment| %>
+    <div class="row">
+      <div class="col-xs-12">
+        author: <%= comment.author %>
+        <br />
+        message: <%= comment.message %>
+        <br /><br />
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

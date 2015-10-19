@@ -42,6 +42,8 @@ class ProductsController < ApplicationController
 
     # add product crumb   
     add_breadcrumb @product.title, product_path(params[:id])
+
+    @comments = @product.comments
   end
 
   # GET /products/new
