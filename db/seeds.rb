@@ -87,9 +87,13 @@ product1 = Product.create!(
 products = Product.where(is_catalog: nil)
 
 products.each do |product|
-  Comment.create!(
-    :author => Faker::Name.title, 
-    :message => Faker::Lorem.paragraph(1),
-    :product_id => product.id
-  )
+  quantity_comments = rand(1..3)
+
+  quantity_comments.times do |n|
+    Comment.create!(
+      :author => Faker::Name.title, 
+      :message => Faker::Lorem.paragraph(1),
+      :product_id => product.id
+    )
+  end
 end
