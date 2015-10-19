@@ -2,6 +2,7 @@ require 'roo'
 
 class Product < ActiveRecord::Base
   belongs_to :color
+  has_many :comments
 
   validates :title, presence: true
   
