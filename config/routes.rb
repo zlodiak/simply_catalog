@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'maintenance/index'
 
   get 'catalog/index'
