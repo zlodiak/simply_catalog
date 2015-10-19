@@ -81,3 +81,15 @@ product1 = Product.create!(
   apples = Product.create!(:title => 'техника apple', :is_catalog => true).move_to_child_of(computers)
   peripherals = Product.create!(:title => 'периферийные устройства', :is_catalog => true).move_to_child_of(computers)
   game_mouses = Product.create!(:title => 'игровые мыши', :is_catalog => true).move_to_child_of(computers)
+
+
+# comments
+products = Product.where(is_catalog: nil)
+
+products.each do |product|
+  Comment.create!(
+    :author => Faker::Name.title, 
+    :message => Faker::Lorem.paragraph(1),
+    :product_id => product.id
+  )
+end
