@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /comments
   # GET /comments.json
   def index
@@ -26,14 +28,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update_attributes(product_id: params[:product_id])
+      redirect_to product_path(params[:product_id])
     end
   end
 
@@ -69,6 +65,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:title, :message, :product_id)
+      params.require(:comment).permit(:author, :message, :product_id)
     end
 end

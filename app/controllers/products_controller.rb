@@ -29,10 +29,10 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @breadcrumbs_products = []
-    current_product = Product.find(params[:id])
+    @current_product = Product.find(params[:id])
 
     # construct crumbs
-    add_crumb(current_product)
+    add_crumb(@current_product)
 
     # add crumb to current crumbspath
     @breadcrumbs_products.reverse.each_with_index do |product, index|
@@ -43,7 +43,8 @@ class ProductsController < ApplicationController
     # add product crumb   
     add_breadcrumb @product.title, product_path(params[:id])
 
-    @comments = @product.comments
+    @comments = @product.comments.order(created_at: :desc)
+    @comment = Comment.new
   end
 
   # GET /products/new
