@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
     # add product crumb   
     add_breadcrumb @product.title, product_path(params[:id])
 
+    # data for comment form
     @comments = @product.comments.order(created_at: :desc)
     @comment = Comment.new
   end
@@ -60,16 +61,9 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    p '==============================='
-    p catalog_params[:catalog_id]
-    p product_params[:title]
-    p product_params[:description]
     @product = Product.create!(product_params)
     @product.is_catalog = nil 
-    parent = Product.find(catalog_params[:catalog_id])
-    p '--------------'
-    p parent
-    
+    parent = Product.find(catalog_params[:catalog_id])   
 
     respond_to do |format|
       if @product.move_to_child_of(parent)
