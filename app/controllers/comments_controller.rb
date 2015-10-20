@@ -28,10 +28,25 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    p '000000000000000000000000000000000000000000'
+    p comment_params[:parent_id]
+    if comment_params[:parent_id]
+      p '111111111111111111111'
+      # create nested comment
+      @comment = Comment.create(comment_params)
 
-    if @comment.update_attributes(product_id: params[:product_id])
-      redirect_to product_path(params[:product_id])
+      if @comment.move_to_child_of(Comment.find(comment_params[:parent_id]))
+        @comment.update_attributes(product_id: params[:product_id])
+        redirect_to product_path(params[:product_id])
+      end      
+    else    
+      p '2222222222222222222222'
+      # create root comment
+      @comment = Comment.new(comment_params)
+
+      if @comment.update_attributes(product_id: params[:product_id])
+        redirect_to product_path(params[:product_id])
+      end
     end
   end
 

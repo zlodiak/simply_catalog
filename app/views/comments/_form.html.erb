@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= hidden_field(Comment, :parent_id, :value => @parent_id) %>
+  <%= hidden_field(:comment, :parent_id, :value => @parent_id) %>
 
   <div class="field">
     <%= f.label :author %><br>
